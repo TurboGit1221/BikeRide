@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="register-container">
+    <h2>Załóż konto</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
+
+        <button type="submit" class="btn">Zarejestruj się</button>
+    </form>
+</div>
+{% endblock %}

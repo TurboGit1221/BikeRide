@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="products-title" id="products">Nasze Produkty</h1>
+<div class="products-container">
+    {% for product in products %}
+        <div class="product-card">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+            {% endif %}
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p><strong>{{ product.price }} PLN</strong></p>
+        </div>
+    {% empty %}
+        <p>Brak produktów w sklepie.</p>
+    {% endfor %}
+</div>
+{% endblock %}

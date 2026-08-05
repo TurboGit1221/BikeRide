@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+<div class="announcement-bar">
+    Darmowa dostawa od 350 zł! Sprawdź nowości w kategorii MTB 🚴
+</div>
+
+<header class="main-header">
+    <div class="logo-container">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo Sklepu" class="logo">
+        </a>
+    </div>
+
+    <div class="auth-links">
+        {% if user.is_authenticated %}
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <a href="{% url 'cart' %}" class="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <div class="user-dropdown">
+                <button class="user-btn" type="button" aria-expanded="false" aria-controls="user-menu">
+                    <i class="fas fa-user-circle"></i> {{ user.username }}
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="user-menu" id="user-menu">
+                    <a href="#">Moje konto</a>
+                    <a href="{% url 'logout' %}">Wyloguj się</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}">Zaloguj się</a> |
+        <a href="{% url 'register' %}">Zarejestruj się</a>
+        {% endif %}
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}#products">Produkty</a></li>
+            <li><a href="{% url 'contact' %}">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2027 Sklep Rowerowy. Wszelkie prawa zastrzeżone. Bike Project wkonawca Andrzej Białoń</p>
+</footer>
+<script>
+    const userDropdown = document.querySelector('.user-dropdown');
+
+    if (userDropdown) {
+        const userButton = userDropdown.querySelector('.user-btn');
+
+        const closeUserMenu = () => {
+            userDropdown.classList.remove('is-open');
+            userButton.setAttribute('aria-expanded', 'false');
+        };
+
+        userButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = userDropdown.classList.toggle('is-open');
+            userButton.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!userDropdown.contains(event.target)) {
+                closeUserMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeUserMenu();
+                userButton.focus();
+            }
+        });
+    }
+</script>
+</body>
+</html>

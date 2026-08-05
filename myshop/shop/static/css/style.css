@@ -1,0 +1,375 @@
+/* ========== Reset i ogólne ustawienia ========== */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #aeaaaa;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* ========== Pasek ogłoszenia ========== */
+.announcement-bar {
+    background-color: #222;
+    color: #0e4ffb;
+    padding: 9px 16px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* ========== Nagłówek ========== */
+header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: #aeaaaa;
+    color: red;
+}
+
+.logo-container {
+    flex-shrink: 0;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 110px;
+    height: auto;
+    display: block;
+    position: relative;
+    top: -12px;
+}
+
+/* ========== Nawigacja ========== */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 9px;
+}
+
+nav ul li a {
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    color: #0e4ffb;
+}
+
+/* ========== Autoryzacja ========== */
+.auth-links {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 13px;
+}
+
+.auth-links a,
+.cart-link {
+    text-decoration: none;
+    color: #0e4ffb;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.auth-links a:hover,
+.cart-link:hover {
+    color: #c31c1c;
+}
+
+/* ========== Dropdown użytkownika ========== */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.user-btn {
+    background: none;
+    border: none;
+    color: #afaaaa;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.user-btn i.fa-user-circle {
+    font-size: 20px;
+    margin-right: 8px;
+    color: #0e4ffb;
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 8px 16px rgba(0,0,0,0.3);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.user-menu a {
+    color: #afaaaa;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s ease-in-out;
+}
+
+.user-menu a:hover {
+    background-color: transparent;
+}
+
+.user-dropdown.is-open .user-menu {
+    display: block;
+}
+
+/* ========== Main i Footer ========== */
+main,
+.main {
+    background-color: #aeaaaa;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 4px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 11px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ========== Formularze i przyciski ========== */
+.register-container {
+    max-width: 250px;
+    margin: 2px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 8px rgba(0,0,0,0.1);
+    text-align: left;
+    font-size: 14px;
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn,
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover,
+button:hover {
+    background-color: #0e4ffb;
+}
+
+/* ========== Awatar i linki ========== */
+.user-avatar-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.user-avatar-menu i {
+    color: #0e4ffb;
+}
+
+.user-avatar-menu .logout-link {
+    margin-left: 10px;
+    color: #f10404;
+    text-decoration: none;
+}
+
+.user-avatar-menu .logout-link:hover {
+    text-decoration: underline;
+}
+
+/* ========== Link Strona Główna (jeśli występuje) ========== */
+.home-link {
+    margin-top: -20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.home-link a {
+    text-decoration: none;
+    color: #0e4ffb;
+    font-weight: bold;
+}
+
+.home-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========== Tytuły ========== */
+.products-title {
+    margin: 20px 16px 14px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 16px 60px;
+}
+
+.product-card {
+    width: 240px;
+    padding: 11px;
+    background: #0e4ffb;
+    color: white;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card h2 {
+    margin: 11px 0 7px;
+    font-size: 18px;
+}
+
+.product-card p {
+    margin: 6px 0;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        width: min(240px, calc(100vw - 54px));
+    }
+
+    .auth-links {
+        right: 10px;
+    }
+}
+
+/* Hover na przycisku konta — bez niebieskiego tła */
+.user-btn:hover,
+.user-btn:focus {
+    background: transparent;
+    outline: none;
+}
+
+.auth-links .user-btn {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.contact-container {
+    width: min(460px, calc(100% - 40px));
+    margin: 24px auto 60px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+.contact-container h1,
+.contact-container > p {
+    text-align: center;
+}
+
+.contact-container label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: 600;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.contact-success {
+    padding: 10px;
+    background: #dff5e5;
+    color: #176b32;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.auth-links > div,
+.user-dropdown,
+.user-btn {
+    align-items: center;
+}
+
+.user-dropdown {
+    vertical-align: middle;
+}
