@@ -81,3 +81,29 @@ class CartAndOrderFlowTests(TestCase):
         self.assertContains(response, 'Wiadomość została wysłana')
 
 # Create your tests here.
+class ProductSearchTests(TestCase):
+    def setUp(self):
+        self.mtb = Product.objects.create(
+            name='Rower MTB',
+            description='Rower przeznaczony do jazdy w górach',
+            price=Decimal('2399.00'),
+            stock=2,
+        )
+        self.city_bike = Product.objects.create(
+            name='Rower miejski',
+            description='Wygodny rower do jazdy po asfalcie',
+            price=Decimal('999.00'),
+            stock=4,
+        )
+
+    def test_search_filters_products_by_name(self):
+        response = self.client.get(reverse('home'), {'q': 'MTB'})
+
+        self.assertContains(response, 'Rower MTB')
+        self.assertNotContains(response, 'Rower miejski')
+
+    def test_search_filters_products_by_description(self):
+        response = self.client.get(reverse('home'), {'q': 'asfalcie'})
+
+        self.assertContains(response, 'Rower miejski')
+        self.assertNotContains(response, 'Rower MTB')

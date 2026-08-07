@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="products-title" id="products">Nasze Produkty</h1>
+
+<form method="get" action="{% url 'home' %}#products" id="products" class="product-search">
+    <input
+        type="search"
+        name="q"
+        value="{{ query }}"
+        placeholder="Wpisz nazwę lub opis roweru..."
+        aria-label="Wyszukaj produkt"
+    >
+    <button type="submit">Szukaj</button>
+
+    {% if query %}
+        <a href="{% url 'home' %}#products" class="clear-search">
+            Wyczyść
+        </a>
+    {% endif %}
+</form>
+
+{% if query %}
+    <p class="search-summary">
+        Wyniki wyszukiwania dla: <strong>{{ query }}</strong>
+    </p>
+{% endif %}
+
 <div class="products-container">
     {% for product in products %}
         <div class="product-card">
@@ -13,7 +36,11 @@
             <p><strong>{{ product.price }} PLN</strong></p>
         </div>
     {% empty %}
-        <p>Brak produktów w sklepie.</p>
+        {% if query %}
+            <p>Nie znaleziono produktów pasujących do wyszukiwania.</p>
+        {% else %}
+            <p>Brak produktów w sklepie.</p>
+        {% endif %}
     {% endfor %}
 </div>
 {% endblock %}

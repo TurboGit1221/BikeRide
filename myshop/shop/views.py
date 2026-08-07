@@ -1,6 +1,7 @@
 #Imports
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db import transaction
+from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -117,8 +118,23 @@ def create_order(request):
 # ================== Frontend Views ==================
 
 def home(request):
+    query = request.GET.get('q', '').strip()
     products = Product.objects.all()
-    return render(request, 'shop/home.html', {'products': products})
+
+    if query:
+        products = products.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query)
+        )
+
+    return render(
+        request,
+        'shop/home.html',
+        {
+            'products': products,
+            'query': query,
+        },
+    )
 
 
 @login_required

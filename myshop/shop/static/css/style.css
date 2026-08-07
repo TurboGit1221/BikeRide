@@ -373,3 +373,44 @@ button:hover {
 .user-dropdown {
     vertical-align: middle;
 }
+
+/* ========== Wyszukiwarka produktów ========== */
+.product-search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: -110px auto 12px;
+    padding: 0 16px;
+}
+
+.product-search input[type="search"] {
+    width: min(420px, 100%);
+    padding: 10px 12px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.product-search button {
+    width: auto;
+    padding: 10px 20px;
+}
+
+.clear-search {
+    padding: 10px 14px;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.clear-search:hover {
+    color: #0e4ffb;
+}
+
+.search-summary {
+    margin: 8px 16px 16px;
+    text-align: center;
+}
